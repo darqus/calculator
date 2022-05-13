@@ -1,8 +1,14 @@
 import { OUTPUT } from './template.js'
 import { NODES_SELECTOR_MAP, CALC_BUTTONS, DEFAULT_VALUES } from './model.js'
 
-export const getNode = (/** @type {string} */ selector) => document.querySelector(selector)
-export const getNodes = (/** @type {string} */ selector) => document.querySelectorAll(selector)
+const NODES_TYPE = Object.freeze({
+  simple: 'querySelector',
+  multiple: 'querySelectorAll'
+})
+
+const getNode = (/** @type {string} */ sel, /** @type {boolean} */ isAll = false) =>  isAll
+? Array.from(document[NODES_TYPE.multiple](sel))
+  : document[NODES_TYPE.simple](sel)
 
 export const NODES = {}
 
@@ -16,8 +22,8 @@ export const init = () => {
   NODES.calcButtons.innerHTML = calcButtons
 
 
-  const numberButtons = getNodes('[data-number]'),
-    operationButtons = getNodes('[data-operation]'),
+  const numberButtons = getNode('[data-number]', true),
+    operationButtons = getNode('[data-operation]', true),
     equalsButton = getNode('[data-equals]'),
     deleteButton = getNode('[data-delete]'),
     allClearButton = getNode('[data-all-clear]'),
