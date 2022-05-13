@@ -82,7 +82,7 @@ export const CALC_BUTTONS = Object.freeze([
 ])
 
 export const DEFAULT_VALUES = Object.freeze({
-  currentOperand: '',
+  currentOperand: '0',
   previousOperand: '',
-  operation: ''
+  operation: undefined
 })

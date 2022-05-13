@@ -44,7 +44,17 @@ export const init = () => {
     }
 
     delete() {
-      this.currentOperand = this.currentOperand.toString().slice(0, -1)
+      if (this.currentOperand == 0) return
+      console.log(this.currentOperand)
+      const sliced = this.currentOperand.toString().slice(0, -1)
+      console.log(sliced)
+      if (sliced === '' || sliced === '0.') {
+        this.currentOperand = DEFAULT_VALUES.currentOperand
+        return
+      }
+      this.currentOperand = this.currentOperand
+        ? sliced
+        : DEFAULT_VALUES.currentOperand
     }
 
     appendNumber(number) {
@@ -59,7 +69,7 @@ export const init = () => {
       }
       this.operation = operation
       this.previousOperand = this.currentOperand
-      this.currentOperand = DEFAULT_VALUES.currentOperand
+      this.currentOperand = ''
     }
 
     compute() {
@@ -104,7 +114,7 @@ export const init = () => {
 
     updateDisplay() {
       this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand)
-      this.previousOperandTextElement.innerText = this.operation !== null
+      this.previousOperandTextElement.innerText = this.operation != null
         ? `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
         : ''
     }
