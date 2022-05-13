@@ -23,6 +23,13 @@ body {
 /*********************
 BREAKPOINTS
 *********************/
+.calculator-grid {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
 .calculator-grid .calc-buttons {
   display: -ms-grid;
   display: grid;
@@ -30,8 +37,8 @@ BREAKPOINTS
       grid-template-rows: minmax(120px, auto) repeat(5, 100px);
   -ms-grid-columns: (100px)[4];
       grid-template-columns: repeat(4, 100px);
-  place-content: center;
-  min-height: 100vh;
+  -webkit-box-shadow: -5px 5px 25px rgba(0, 100, 255, 0.5), 3px -6px 16px rgba(255, 0, 0, 0.5);
+          box-shadow: -5px 5px 25px rgba(0, 100, 255, 0.5), 3px -6px 16px rgba(255, 0, 0, 0.5);
 }
 
 @media (max-width: 37.5em) {
