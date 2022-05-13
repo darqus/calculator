@@ -1,0 +1,11 @@
+{
+  "name": "calculator",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {
+    "stylelint": "^14.6.1",
+    "stylelint-config-recess-order": "^3.0.0"
+  }
+}

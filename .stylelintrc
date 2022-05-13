@@ -1,0 +1,45 @@
+{
+  "extends": ["stylelint-config-recess-order"],
+  "rules": {
+    "alpha-value-notation": "number",
+    "string-quotes": "double",
+    "string-no-newline": null,
+    "selector-max-universal": 1,
+    "selector-max-type": [
+      0,
+      { "ignore": ["child", "descendant", "compounded"] }
+    ],
+    "max-nesting-depth": [
+      7,
+      {
+        "ignore": ["pseudo-classes", "blockless-at-rules"],
+        "ignoreAtRules": ["media"]
+      }
+    ],
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global", "export", "import", "local"]
+      }
+    ],
+    "selector-class-pattern": ""
+  },
+  "overrides": [
+    {
+      "files": ["*.scss", "**/*.scss"],
+      "rules": {
+        "unit-allowed-list": [
+          "em",
+          "rem",
+          "s",
+          "%",
+          "px",
+          "fr",
+          "vw",
+          "vh",
+          "deg"
+        ]
+      }
+    }
+  ]
+}
