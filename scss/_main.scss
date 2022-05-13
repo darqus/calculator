@@ -15,16 +15,21 @@
 
     & > button {
       font-size: 2rem;
+      color:rgba(0, 0, 0, 0.75);
       cursor: pointer;
       background-color: rgba(255, 255, 255, 0.75);
       border: 1px solid #fff;
       outline: none;
-      transition: background-color 0.3s;
+      transition-timing-function: ease-out;
+      transition-duration: .3s;
+      transition-property: color, text-shadow, background-color;
       @include breakpoint(mobileonly) {
         font-size: 1.5rem;
       }
 
       &:hover {
+        color:#000;
+        text-shadow: 0 0 3px rgba(0, 0, 0, .8), 0 0 1px rgba(0, 100, 255, .8);
         background-color: rgba(255, 255, 255, 0.9);
       }
     }
