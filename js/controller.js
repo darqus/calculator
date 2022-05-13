@@ -45,9 +45,7 @@ export const init = () => {
 
     delete() {
       if (this.currentOperand == 0) return
-      console.log(this.currentOperand)
       const sliced = this.currentOperand.toString().slice(0, -1)
-      console.log(sliced)
       if (sliced === '' || sliced === '0.') {
         this.currentOperand = DEFAULT_VALUES.currentOperand
         return
