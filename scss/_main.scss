@@ -5,6 +5,10 @@
     grid-template-columns: repeat(4, 100px);
     place-content: center;
     min-height: 100vh;
+    @include breakpoint(mobileonly) {
+      grid-template-rows: minmax(90px, auto) repeat(5, 75px);
+      grid-template-columns: repeat(4, 75px);
+    }
 
     & > button {
       font-size: 2rem;
@@ -13,6 +17,9 @@
       border: 1px solid #fff;
       outline: none;
       transition: background-color 0.3s;
+      @include breakpoint(mobileonly) {
+        font-size: 1.5rem;
+      }
 
       &:hover {
         background-color: rgba(255, 255, 255, 0.9);
@@ -40,10 +47,16 @@
   .previous-operand {
     font-size: 1.5rem;
     color: rgba(255, 255, 255, 0.75);
+    @include breakpoint(mobileonly) {
+      font-size: 1.0rem;
+    }
   }
 
   .current-operand {
     font-size: 2.5rem;
     color: #fff;
+    @include breakpoint(mobileonly) {
+      font-size: 2.0rem;
+    }
   }
 }
