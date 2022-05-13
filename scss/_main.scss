@@ -16,6 +16,7 @@
     & > button {
       font-size: 2rem;
       color:rgba(0, 0, 0, 0.75);
+      text-shadow: 0 0 3px rgba(0, 0, 0, .6), 0 0 1px rgba(0, 100, 255, .6);
       cursor: pointer;
       background-color: rgba(255, 255, 255, 0.75);
       border: 1px solid #fff;
@@ -29,7 +30,7 @@
 
       &:hover {
         color:#000;
-        text-shadow: 0 0 3px rgba(0, 0, 0, .8), 0 0 1px rgba(0, 100, 255, .8);
+        text-shadow: 0 0 3px rgba(0, 0, 0, .4), 0 0 1px rgba(0, 100, 255, .4);
         background-color: rgba(255, 255, 255, 0.9);
       }
     }
@@ -47,6 +48,7 @@
     align-items: flex-end;
     justify-content: space-around;
     padding: 1rem;
+    text-shadow: 0 0 3px rgba(255, 255, 255, .6), 0 0 1px rgba(0, 100, 255, .6);
     word-break: break-all;
     word-wrap: break-word;
     background-color: rgba(0, 0, 0, 0.75);

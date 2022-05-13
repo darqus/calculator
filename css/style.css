@@ -53,6 +53,7 @@ BREAKPOINTS
 .calculator-grid .calc-buttons > button {
   font-size: 2rem;
   color: rgba(0, 0, 0, 0.75);
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.6), 0 0 1px rgba(0, 100, 255, 0.6);
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.75);
   border: 1px solid #fff;
@@ -73,7 +74,7 @@ BREAKPOINTS
 
 .calculator-grid .calc-buttons > button:hover {
   color: #000;
-  text-shadow: 0 0 3px rgba(0, 0, 0, 0.8), 0 0 1px rgba(0, 100, 255, 0.8);
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.4), 0 0 1px rgba(0, 100, 255, 0.4);
   background-color: rgba(255, 255, 255, 0.9);
 }
 
@@ -98,6 +99,7 @@ BREAKPOINTS
   -ms-flex-pack: distribute;
       justify-content: space-around;
   padding: 1rem;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.6), 0 0 1px rgba(0, 100, 255, 0.6);
   word-break: break-all;
   word-wrap: break-word;
   background-color: rgba(0, 0, 0, 0.75);
