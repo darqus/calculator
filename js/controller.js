@@ -1,14 +1,14 @@
 import { OUTPUT } from './template.js'
 import { NODES_SELECTOR_MAP, OPERATIONS, CALC_BUTTONS, DEFAULT_VALUES } from './model.js'
 
-const NODES_TYPE = Object.freeze({
+const NODES_TYPE = () => ({
   simple: 'querySelector',
   multiple: 'querySelectorAll'
 })
 
 const getNode = (/** @type {string} */ sel, /** @type {boolean} */ isAll = false) =>  isAll
-? Array.from(document[NODES_TYPE.multiple](sel))
-  : document[NODES_TYPE.simple](sel)
+? Array.from(document[NODES_TYPE().multiple](sel))
+  : document[NODES_TYPE().simple](sel)
 
 export const NODES = {}
 
