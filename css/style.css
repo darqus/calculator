@@ -17,11 +17,14 @@
 
 body {
   margin: 0;
-  background: linear-gradient(217deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, rgba(200, 200, 0, 0.8), rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, rgba(0, 100, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
+  background: linear-gradient(217deg, rgba(30, 30, 30, 0.95), rgba(40, 30, 50, 0) 95%), linear-gradient(127deg, rgba(30, 40, 50, 0.95), rgba(50, 30, 40, 0) 95%), linear-gradient(336deg, rgba(40, 30, 30, 0.95), rgba(30, 40, 50, 0) 95%);
 }
 
 /*********************
 BREAKPOINTS
+*********************/
+/*********************
+THEME
 *********************/
 .calculator-grid {
   display: -ms-grid;
@@ -37,8 +40,8 @@ BREAKPOINTS
       grid-template-rows: minmax(120px, auto) repeat(5, 100px);
   -ms-grid-columns: (100px)[4];
       grid-template-columns: repeat(4, 100px);
-  -webkit-box-shadow: -5px 5px 25px rgba(0, 100, 255, 0.5), 3px -6px 16px rgba(255, 0, 0, 0.5);
-          box-shadow: -5px 5px 25px rgba(0, 100, 255, 0.5), 3px -6px 16px rgba(255, 0, 0, 0.5);
+  -webkit-box-shadow: -5px 5px 25px rgba(30, 40, 50, 0.5), 3px -6px 16px rgba(50, 30, 40, 0.5);
+          box-shadow: -5px 5px 25px rgba(30, 40, 50, 0.5), 3px -6px 16px rgba(50, 30, 40, 0.5);
 }
 
 @media (max-width: 37.5em) {
@@ -53,10 +56,10 @@ BREAKPOINTS
 .calculator-grid .calc-buttons > button {
   font-size: 2rem;
   color: rgba(0, 0, 0, 0.75);
-  text-shadow: 0 0 3px rgba(0, 0, 0, 0.6), 0 0 1px rgba(0, 100, 255, 0.6);
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.75);
-  border: 1px solid #fff;
+  border: 1px solid #bbb;
   outline: none;
   -webkit-transition-timing-function: ease-out;
           transition-timing-function: ease-out;
@@ -72,10 +75,27 @@ BREAKPOINTS
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  .calculator-grid .calc-buttons > button {
+    color: rgba(255, 255, 255, 0.75);
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.6);
+    background-color: rgba(0, 0, 0, 0.75);
+    border: 1px solid #444;
+  }
+}
+
 .calculator-grid .calc-buttons > button:hover {
   color: #000;
-  text-shadow: 0 0 3px rgba(0, 0, 0, 0.4), 0 0 1px rgba(0, 100, 255, 0.4);
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
   background-color: rgba(255, 255, 255, 0.9);
+}
+
+@media (prefers-color-scheme: dark) {
+  .calculator-grid .calc-buttons > button:hover {
+    color: #fff;
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.4);
+    background-color: rgba(0, 0, 0, 0.65);
+  }
 }
 
 .calculator-grid .twice {
@@ -99,10 +119,18 @@ BREAKPOINTS
   -ms-flex-pack: distribute;
       justify-content: space-around;
   padding: 1rem;
-  text-shadow: 0 0 3px rgba(255, 255, 255, 0.6), 0 0 1px rgba(0, 100, 255, 0.6);
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.6);
   word-break: break-all;
   word-wrap: break-word;
   background-color: rgba(0, 0, 0, 0.75);
+}
+
+@media (prefers-color-scheme: dark) {
+  .calculator-grid .output {
+    color: rgba(255, 255, 255, 0.75);
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+    background-color: rgba(255, 255, 255, 0.75);
+  }
 }
 
 .calculator-grid .previous-operand {
@@ -116,6 +144,12 @@ BREAKPOINTS
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  .calculator-grid .previous-operand {
+    color: rgba(0, 0, 0, 0.75);
+  }
+}
+
 .calculator-grid .current-operand {
   font-size: 2.5rem;
   color: #fff;
@@ -124,5 +158,11 @@ BREAKPOINTS
 @media (max-width: 37.5em) {
   .calculator-grid .current-operand {
     font-size: 2.0rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .calculator-grid .current-operand {
+    color: #000;
   }
 }
