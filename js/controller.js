@@ -62,12 +62,12 @@ export const init = () => {
 
     chooseOperation(operation) {
       if (this.currentOperand === DEFAULT_VALUES().currentOperand) return
-      if (this.previousOperand !== '') {
+      if (this.previousOperand !== DEFAULT_VALUES().previousOperand) {
         this.compute()
       }
       this.operation = operation
       this.previousOperand = this.currentOperand
-      this.currentOperand = ''
+      this.currentOperand = DEFAULT_VALUES().previousOperand
     }
 
     compute() {
