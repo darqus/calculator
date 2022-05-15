@@ -1,11 +1,8 @@
-import { getNode } from './utils.js'
 import { OUTPUT } from './template.js'
-import { NODES_SELECTOR_MAP, OPERATIONS, CALC_BUTTONS, DEFAULT_VALUES } from './model.js'
-
-export const NODES = {}
-
-NODES_SELECTOR_MAP
-  .forEach((value, key) => (NODES[key] = getNode(value)))
+import {
+  NODES, OPERATIONS, CALC_BUTTONS, DEFAULT_VALUES,
+  getButtonsFromSelector
+} from './model.js'
 
 
 export const init = () => {
@@ -13,14 +10,13 @@ export const init = () => {
 
   NODES.calcButtons.innerHTML = calcButtons
 
-
-  const numberButtons = getNode('[data-number]', true),
-    operationButtons = getNode('[data-operation]', true),
-    equalsButton = getNode('[data-equals]'),
-    deleteButton = getNode('[data-delete]'),
-    allClearButton = getNode('[data-all-clear]'),
-    previousOperandTextElement = getNode('[data-previous-operand]'),
-    currentOperandTextElement = getNode('[data-current-operand]')
+  const numberButtons = getButtonsFromSelector().numberButtons
+  const operationButtons = getButtonsFromSelector().operationButtons
+  const equalsButton = getButtonsFromSelector().equalsButton
+  const deleteButton = getButtonsFromSelector().deleteButton
+  const allClearButton = getButtonsFromSelector().allClearButton
+  const previousOperandTextElement = getButtonsFromSelector().previousOperandTextElement
+  const currentOperandTextElement = getButtonsFromSelector().currentOperandTextElement
 
   class Calulator {
     constructor(previousOperandTextElement, currentOperandTextElement) {

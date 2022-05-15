@@ -1,8 +1,26 @@
-export const NODES_SELECTOR_MAP = new Map(
+import { getNode } from './utils.js'
+
+const NODES_SELECTOR_MAP = new Map(
   [
     ['calcButtons', '.calc-buttons']
   ]
 )
+
+export const NODES = {}
+
+NODES_SELECTOR_MAP
+  .forEach((value, key) => (NODES[key] = getNode(value)))
+
+export const getButtonsFromSelector = () => ({
+  numberButtons: getNode('[data-number]', true),
+  operationButtons: getNode('[data-operation]', true),
+  equalsButton: getNode('[data-equals]'),
+  deleteButton: getNode('[data-delete]'),
+  allClearButton: getNode('[data-all-clear]'),
+  previousOperandTextElement: getNode('[data-previous-operand]'),
+  currentOperandTextElement: getNode('[data-current-operand]')
+})
+
 
 export const OPERATIONS = () => ({
   plus: '+',
