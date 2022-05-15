@@ -19,15 +19,15 @@ export const CALC_BUTTONS = () => ([
     attr: 'data-operation'
   },
   {
-    label: '1',
+    label: '7',
     attr: 'data-number'
   },
   {
-    label: '2',
+    label: '8',
     attr: 'data-number'
   },
   {
-    label: '3',
+    label: '9',
     attr: 'data-number'
   },
   {
@@ -51,15 +51,15 @@ export const CALC_BUTTONS = () => ([
     attr: 'data-operation'
   },
   {
-    label: '7',
+    label: '1',
     attr: 'data-number'
   },
   {
-    label: '8',
+    label: '2',
     attr: 'data-number'
   },
   {
-    label: '9',
+    label: '3',
     attr: 'data-number'
   },
   {
