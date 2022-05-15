@@ -4,7 +4,7 @@ export const NODES_SELECTOR_MAP = new Map(
   ]
 )
 
-export const CALC_BUTTONS = Object.freeze([
+export const CALC_BUTTONS = () => ([
   {
     label: 'AC',
     attr: 'data-all-clear',
@@ -81,7 +81,7 @@ export const CALC_BUTTONS = Object.freeze([
   }
 ])
 
-export const DEFAULT_VALUES = Object.freeze({
+export const DEFAULT_VALUES = () => ({
   currentOperand: '0',
   previousOperand: '',
   operation: undefined

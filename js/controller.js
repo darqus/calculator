@@ -17,7 +17,7 @@ NODES_SELECTOR_MAP
 
 
 export const init = () => {
-  const calcButtons = OUTPUT + CALC_BUTTONS.map(({ label, attr, className }) => !className ? `<button ${attr}>${label}</button>` : `<button ${attr} class="twice">${label}</button>`).join(' ')
+  const calcButtons = OUTPUT + CALC_BUTTONS().map(({ label, attr, className }) => !className ? `<button ${attr}>${label}</button>` : `<button ${attr} class="twice">${label}</button>`).join(' ')
 
   NODES.calcButtons.innerHTML = calcButtons
 
@@ -38,21 +38,21 @@ export const init = () => {
     }
 
     clear() {
-      this.currentOperand = DEFAULT_VALUES.currentOperand
-      this.previousOperand = DEFAULT_VALUES.previousOperand
-      this.operation = DEFAULT_VALUES.operation
+      this.currentOperand = DEFAULT_VALUES().currentOperand
+      this.previousOperand = DEFAULT_VALUES().previousOperand
+      this.operation = DEFAULT_VALUES().operation
     }
 
     delete() {
       if (this.currentOperand == 0) return
       const sliced = this.currentOperand.toString().slice(0, -1)
       if (sliced === '' || sliced === '0.') {
-        this.currentOperand = DEFAULT_VALUES.currentOperand
+        this.currentOperand = DEFAULT_VALUES().currentOperand
         return
       }
       this.currentOperand = this.currentOperand
         ? sliced
-        : DEFAULT_VALUES.currentOperand
+        : DEFAULT_VALUES().currentOperand
     }
 
     appendNumber(number) {
@@ -61,7 +61,7 @@ export const init = () => {
     }
 
     chooseOperation(operation) {
-      if (this.currentOperand === DEFAULT_VALUES.currentOperand) return
+      if (this.currentOperand === DEFAULT_VALUES().currentOperand) return
       if (this.previousOperand !== '') {
         this.compute()
       }
@@ -92,8 +92,8 @@ export const init = () => {
           return
       }
       this.currentOperand = computation
-      this.operation = DEFAULT_VALUES.operation
-      this.previousOperand = DEFAULT_VALUES.previousOperand
+      this.operation = DEFAULT_VALUES().operation
+      this.previousOperand = DEFAULT_VALUES().previousOperand
     }
 
     getDisplayNumber(number) {
