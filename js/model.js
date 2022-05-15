@@ -72,7 +72,7 @@ export const CALC_BUTTONS = () => ([
     attr: 'data-number'
   },
   {
-    label: OPERATIONS().plus,
+    label: OPERATIONS().minus,
     attr: 'data-operation'
   },
   {
@@ -88,7 +88,7 @@ export const CALC_BUTTONS = () => ([
     attr: 'data-number'
   },
   {
-    label: OPERATIONS().minus,
+    label: OPERATIONS().plus,
     attr: 'data-operation'
   },
   {
