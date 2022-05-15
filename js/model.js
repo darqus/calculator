@@ -31,7 +31,7 @@ export const OPERATIONS = () => ({
 
 export const CALC_BUTTONS = () => ([
   {
-    label: 'AC',
+    label: 'C',
     attr: 'data-all-clear',
     className: 'twice'
   },
