@@ -34,14 +34,15 @@
         border: 1px solid #444;
       }
 
+      &:focus,
       &:hover {
         color:#000;
         text-shadow: 0 0 3px rgba(0, 0, 0, .4);
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: rgba(255, 255, 255, 0.8);
         @include theme(dark) {
           color:#fff;
           text-shadow: 0 0 3px rgba(255, 255, 255, .4);
-          background-color: rgba(0, 0, 0, 0.65);
+          background-color: rgba(0, 0, 0, 0.6);
         }
       }
     }
