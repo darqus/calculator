@@ -1,0 +1,11 @@
+/*********************
+THEME
+*********************/
+
+@mixin theme($color) {
+  @if $color == dark {
+    @media (prefers-color-scheme: dark) {
+      @content;
+    }
+  }
+}

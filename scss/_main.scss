@@ -16,10 +16,10 @@
     & > button {
       font-size: 2rem;
       color:rgba(0, 0, 0, 0.75);
-      text-shadow: 0 0 3px rgba(0, 0, 0, .6), 0 0 1px rgba(0, 100, 255, .6);
+      text-shadow: 0 0 3px rgba(0, 0, 0, .6);
       cursor: pointer;
       background-color: rgba(255, 255, 255, 0.75);
-      border: 1px solid #fff;
+      border: 1px solid #ccc;
       outline: none;
       transition-timing-function: ease-out;
       transition-duration: .3s;
@@ -27,11 +27,22 @@
       @include breakpoint(mobileonly) {
         font-size: 1.5rem;
       }
+      @include theme(dark) {
+        color:rgba(255, 255, 255, 0.75);
+        text-shadow: 0 0 3px rgba(255, 255, 255, .6);
+        background-color: rgba(0, 0, 0, 0.75);
+        border: 1px solid #555;
+      }
 
       &:hover {
         color:#000;
-        text-shadow: 0 0 3px rgba(0, 0, 0, .4), 0 0 1px rgba(0, 100, 255, .4);
+        text-shadow: 0 0 3px rgba(0, 0, 0, .4);
         background-color: rgba(255, 255, 255, 0.9);
+        @include theme(dark) {
+          color:#fff;
+          text-shadow: 0 0 3px rgba(255, 255, 255, .4);
+          background-color: rgba(0, 0, 0, 0.65);
+        }
       }
     }
   }
@@ -48,10 +59,15 @@
     align-items: flex-end;
     justify-content: space-around;
     padding: 1rem;
-    text-shadow: 0 0 3px rgba(255, 255, 255, .6), 0 0 1px rgba(0, 100, 255, .6);
+    text-shadow: 0 0 3px rgba(255, 255, 255, .6);
     word-break: break-all;
     word-wrap: break-word;
     background-color: rgba(0, 0, 0, 0.75);
+    @include theme(dark) {
+      color:rgba(255, 255, 255, 0.75);
+      text-shadow: 0 0 3px rgba(0, 0, 0, .6);
+      background-color: rgba(255, 255, 255, 0.75);
+    }
   }
 
   .previous-operand {
@@ -60,6 +76,9 @@
     @include breakpoint(mobileonly) {
       font-size: 1.0rem;
     }
+    @include theme(dark) {
+      color:rgba(0, 0, 0, 0.75);
+    }
   }
 
   .current-operand {
@@ -67,6 +86,9 @@
     color: #fff;
     @include breakpoint(mobileonly) {
       font-size: 2.0rem;
+    }
+    @include theme(dark) {
+      color:#000;
     }
   }
 }
