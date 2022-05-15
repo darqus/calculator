@@ -37,6 +37,12 @@ export const init = () => {
       this.clear()
     }
 
+    isComputed = false
+
+    toggleComputed() {
+      this.isComputed = !this.isComputed
+    }
+
     clear() {
       this.currentOperand = DEFAULT_VALUES().currentOperand
       this.previousOperand = DEFAULT_VALUES().previousOperand
@@ -57,6 +63,11 @@ export const init = () => {
 
     appendNumber(number) {
       if (number === '.' && this.currentOperand.includes('.')) return
+      if (this.isComputed) {
+        this.currentOperand = number.toString()
+        this.toggleComputed()
+        return
+      }
       this.currentOperand = this.currentOperand.toString() + number.toString()
     }
 
@@ -94,6 +105,7 @@ export const init = () => {
       this.currentOperand = computation
       this.operation = DEFAULT_VALUES().operation
       this.previousOperand = DEFAULT_VALUES().previousOperand
+      this.toggleComputed()
     }
 
     getDisplayNumber(number) {
