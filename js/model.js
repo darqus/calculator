@@ -4,6 +4,13 @@ export const NODES_SELECTOR_MAP = new Map(
   ]
 )
 
+export const OPERATIONS = () => ({
+  plus: '+',
+  minus: '−',
+  multiply: '×',
+  divide: '÷',
+})
+
 export const CALC_BUTTONS = () => ([
   {
     label: 'AC',
@@ -11,11 +18,11 @@ export const CALC_BUTTONS = () => ([
     className: 'twice'
   },
   {
-    label: 'DEL',
+    label: '◄',
     attr: 'data-delete'
   },
   {
-    label: '÷',
+    label: OPERATIONS().divide,
     attr: 'data-operation'
   },
   {
@@ -31,7 +38,7 @@ export const CALC_BUTTONS = () => ([
     attr: 'data-number'
   },
   {
-    label: '*',
+    label: OPERATIONS().multiply,
     attr: 'data-operation'
   },
   {
@@ -47,7 +54,7 @@ export const CALC_BUTTONS = () => ([
     attr: 'data-number'
   },
   {
-    label: '+',
+    label: OPERATIONS().plus,
     attr: 'data-operation'
   },
   {
@@ -63,7 +70,7 @@ export const CALC_BUTTONS = () => ([
     attr: 'data-number'
   },
   {
-    label: '-',
+    label: OPERATIONS().minus,
     attr: 'data-operation'
   },
   {

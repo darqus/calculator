@@ -1,5 +1,5 @@
 import { OUTPUT } from './template.js'
-import { NODES_SELECTOR_MAP, CALC_BUTTONS, DEFAULT_VALUES } from './model.js'
+import { NODES_SELECTOR_MAP, OPERATIONS, CALC_BUTTONS, DEFAULT_VALUES } from './model.js'
 
 const NODES_TYPE = Object.freeze({
   simple: 'querySelector',
@@ -76,16 +76,16 @@ export const init = () => {
         current = parseFloat(this.currentOperand)
       if (isNaN(previous) || isNaN(current)) return
       switch (this.operation) {
-        case '+':
+        case OPERATIONS().plus:
           computation = previous + current
           break
-        case '-':
+        case OPERATIONS().minus:
           computation = previous - current
           break
-        case '*':
+        case OPERATIONS().multiply:
           computation = previous * current
           break
-        case '÷':
+        case OPERATIONS().divide:
           computation = previous / current
           break
         default:
