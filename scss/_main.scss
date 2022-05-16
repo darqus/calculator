@@ -72,21 +72,21 @@
   }
 
   .previous-operand {
-    font-size: 1.5rem;
-    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.45);
     @include breakpoint(mobileonly) {
-      font-size: 1.0rem;
+      font-size: 0.9rem;
     }
     @include theme(dark) {
-      color:rgba(0, 0, 0, 0.75);
+      color:rgba(0, 0, 0, 0.45);
     }
   }
 
   .current-operand {
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: #fff;
     @include breakpoint(mobileonly) {
-      font-size: 2.0rem;
+      font-size: 1.5rem;
     }
     @include theme(dark) {
       color:#000;
