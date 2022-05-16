@@ -134,30 +134,30 @@ THEME
 }
 
 .calculator-grid .previous-operand {
-  font-size: 1.5rem;
-  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.45);
 }
 
 @media (max-width: 37.5em) {
   .calculator-grid .previous-operand {
-    font-size: 1.0rem;
+    font-size: 0.9rem;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   .calculator-grid .previous-operand {
-    color: rgba(0, 0, 0, 0.75);
+    color: rgba(0, 0, 0, 0.45);
   }
 }
 
 .calculator-grid .current-operand {
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #fff;
 }
 
 @media (max-width: 37.5em) {
   .calculator-grid .current-operand {
-    font-size: 2.0rem;
+    font-size: 1.5rem;
   }
 }
 
