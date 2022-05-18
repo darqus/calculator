@@ -1,6 +1,6 @@
 import { DEFAULT_VALUES } from './model.js'
 
 export const OUTPUT = `<div class="output">
-<div data-previous-operand class="previous-operand"></div>
-<div data-current-operand class="current-operand">${DEFAULT_VALUES().currentOperand}</div>
+<div data-memoise class="previous-operand"></div>
+<div data-result class="current-operand">${DEFAULT_VALUES().operands[1]}</div>
 </div>`

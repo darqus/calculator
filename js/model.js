@@ -1,4 +1,4 @@
-import { getNode } from './utils.js'
+import { getNode, OPERATIONS, DIGIT_DELIMETER } from './utils.js'
 
 const NODES_SELECTOR_MAP = new Map(
   [
@@ -16,23 +16,16 @@ export const getButtonsFromSelector = () => ({
   operationButtons: getNode('[data-operation]', true),
   equalsButton: getNode('[data-equals]'),
   deleteButton: getNode('[data-delete]'),
-  allClearButton: getNode('[data-all-clear]'),
-  previousOperandTextElement: getNode('[data-previous-operand]'),
-  currentOperandTextElement: getNode('[data-current-operand]')
+  clearButton: getNode('[data-clear]'),
+  calcMemoiseNode: getNode('[data-memoise]'),
+  calcRezultNode: getNode('[data-result]')
 })
 
-
-export const OPERATIONS = () => ({
-  plus: '+',
-  minus: '−',
-  multiply: '×',
-  divide: '÷',
-})
 
 export const CALC_BUTTONS = () => ([
   {
     label: 'C',
-    attr: 'data-all-clear',
+    attr: 'data-clear',
     className: 'twice'
   },
   {
@@ -92,7 +85,7 @@ export const CALC_BUTTONS = () => ([
     attr: 'data-operation'
   },
   {
-    label: '.',
+    label: DIGIT_DELIMETER,
     attr: 'data-number'
   },
   {
@@ -107,7 +100,7 @@ export const CALC_BUTTONS = () => ([
 ])
 
 export const DEFAULT_VALUES = () => ({
-  currentOperand: '0',
-  previousOperand: '',
-  operation: undefined
+  operands: ['', '0'], // [memoise, rezult]
+  tempRezult: '',
+  operation: ''
 })
