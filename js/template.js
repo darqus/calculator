@@ -7,7 +7,7 @@ const NODES_SELECTOR_MAP = new Map(
   ]
 )
 
-export const NODES = {}
+const NODES = {}
 
 NODES_SELECTOR_MAP
   .forEach((value, key) => (NODES[key] = getNode(value)))
@@ -27,7 +27,7 @@ const OUTPUT_NODE = `<div class="output">
 <div data-result class="current-operand">${DEFAULT_VALUES().operands[1]}</div>
 </div>`
 
-export const CALC_BUTTONS = () => ([
+const CALC_BUTTONS = () => ([
   {
     label: 'C',
     attr: 'data-clear',
@@ -104,4 +104,6 @@ export const CALC_BUTTONS = () => ([
   }
 ])
 
-export const CALC_MODES = OUTPUT_NODE + CALC_BUTTONS().map(({ label, attr, className }) => !className ? `<button ${attr}>${label}</button>` : `<button ${attr} class="twice">${label}</button>`).join(' ')
+const CALC_MODES = OUTPUT_NODE + CALC_BUTTONS().map(({ label, attr, className }) => !className ? `<button ${attr}>${label}</button>` : `<button ${attr} class="twice">${label}</button>`).join(' ')
+
+NODES.calcButtons.innerHTML = CALC_MODES

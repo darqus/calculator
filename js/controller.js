@@ -1,7 +1,5 @@
-import { NODES, getButtonsFromSelector, CALC_MODES } from './template.js'
+import { getButtonsFromSelector } from './template.js'
 import { Calulator } from './Calculator.js'
-
-NODES.calcButtons.innerHTML = CALC_MODES
 
 const calulator = new Calulator(
   getButtonsFromSelector().calcMemoiseNode,
