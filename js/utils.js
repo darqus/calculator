@@ -16,6 +16,13 @@ export const getNode = (sel, isAll = false) =>  isAll
 const DEFAULT_DIGIT_DELIMETER = '.'
 export const DIGIT_DELIMETER = '.'
 
+const MAGIC_MATH_DIGIT_STRING = '0'.repeat(14)
+
+const checkForMagicMathJS = (integerDigits, decimalDigits) => decimalDigits.includes(MAGIC_MATH_DIGIT_STRING)
+  ? parseFloat(+(integerDigits + DEFAULT_DIGIT_DELIMETER + decimalDigits.slice(0, -1))).toString().split(DEFAULT_DIGIT_DELIMETER)[1]
+  : decimalDigits
+
+
 /**
  * @param {string | number} value
 */
@@ -35,15 +42,14 @@ export const setDigits = (value) => {
   const stringNumber = value.toString()
   const integerDigits = parseInt(stringNumber)
   const decimalDigits = stringNumber.split(DEFAULT_DIGIT_DELIMETER)[1]
+
   const integerDisplay = isNumeric(+setDelimeter(integerDigits))
     ? ''
-    : integerDigits.toLocaleString('en', {
-      maximumFractionDigits: 0
-    })
+    : integerDigits
 
   return decimalDigits === undefined
     ? integerDisplay
-    : `${integerDisplay}${DIGIT_DELIMETER}${decimalDigits}`
+    : `${integerDisplay}${DIGIT_DELIMETER}${checkForMagicMathJS(integerDigits, decimalDigits)}`
 }
 
 export const OPERATIONS = () => ({

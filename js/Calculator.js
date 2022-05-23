@@ -1,4 +1,4 @@
-import { DIGIT_DELIMETER, setDelimeter, isNumeric, setDigits, calc } from './utils.js'
+import { DIGIT_DELIMETER, isNumeric, setDigits, calc } from './utils.js'
 import { DEFAULT_VALUES } from './model.js'
 
 export class Calulator {
@@ -38,21 +38,24 @@ export class Calulator {
    * @param {string | number} value
    */
   set setMemoiseOperand(value = DEFAULT_VALUES().operands[0]) {
-    return this.STATE.operands[0] = setDelimeter(value)
+    // return this.STATE.operands[0] = setDelimeter(value)
+    return this.STATE.operands[0] = value.toString()
   }
 
   /**
    * @param {string | number} value
    */
   set setRezultOperand(value = DEFAULT_VALUES().operands[1]) {
-     return this.STATE.operands[1] = setDelimeter(value)
+    //  return this.STATE.operands[1] = setDelimeter(value)
+     return this.STATE.operands[1] = value.toString()
   }
 
   /**
    * @param {string | number} value
    */
   set setTempRezult(value = DEFAULT_VALUES().tempRezult) {
-    return this.STATE.tempRezult = setDelimeter(value)
+    // return this.STATE.tempRezult = setDelimeter(value)
+    return this.STATE.tempRezult = value.toString()
   }
 
   /**
@@ -116,34 +119,36 @@ export class Calulator {
 
     this.log('before', 'appendNumber')
 
-    let currentDigit = value
+    let resultDigit = value
 
     if (this.existRezultOperand) {
-      currentDigit = this.STATE.operands[1].toString() + value
+      resultDigit = this.STATE.operands[1].toString() + value
     }
 
     if (value === DIGIT_DELIMETER) {
-      currentDigit =  DEFAULT_VALUES().operands[1] + DIGIT_DELIMETER
+      resultDigit = DEFAULT_VALUES().operands[1] + DIGIT_DELIMETER
     }
 
-    console.log('currentDigit:', currentDigit)
+    console.log('resultDigit:', resultDigit)
 
-    const currentOperand = currentDigit.toString()
+    const resultOperand = resultDigit.toString()
 
-    console.log('currentOperand: ', currentOperand)
+    console.log('resultOperand: ', resultOperand)
 
-    this.setRezultOperand = currentOperand
+    console.log('all', this.existMemoiseOperand && this.existOperation && this.existTempRezult && this.existRezultOperand)
 
-    /* console.log('this.existMemoiseOperand:', this.existMemoiseOperand)
-
-    if (!this.existMemoiseOperand) {
+    /* if (this.existMemoiseOperand && this.existOperation && this.existTempRezult && this.existRezultOperand) {
       this.clear()
     } */
 
-    if (!this.existOperation) {
-      this.setMemoiseOperand = currentOperand
-      this.setTempRezult = currentOperand
+    this.setRezultOperand = resultOperand
+
+    if (!this.existMemoiseOperand) {
+      this.setTempRezult = resultOperand
     }
+
+    // console.log('this.existMemoiseOperand:', this.existMemoiseOperand)
+
 
     this.updateDisplayResult('appendNumber')
 
@@ -177,7 +182,7 @@ export class Calulator {
     const OPERANDS = [
       this.STATE.operands[0],
       this.STATE.operands[1]
-    ].map((_) => parseFloat(+setDelimeter(_)))
+    ].map((_) => parseFloat(_))
 
     console.log(OPERANDS)
 
@@ -195,20 +200,26 @@ export class Calulator {
 
     console.log('not exist res op:', !this.existRezultOperand)
 
+    console.log('this.existMemoiseOperand %%%:', !this.existMemoiseOperand)
+
+
+    if (!this.existOperation) {
+      this.setMemoiseOperand = this.STATE.operands[1]
+    }
+
     if (this.existOperation) {
       console.log('####', this.STATE.operands[1])
 
       // this.setTempRezult = this.STATE.operands[1]
       this.setMemoiseOperand = this.STATE.operands[1]
-      this.setRezultOperand = calc(OPERANDS[0])(this.STATE.operation)(OPERANDS[1])
+      this.setRezultOperand = setDigits(calc(OPERANDS[0])(this.STATE.operation)(OPERANDS[1]))
 
-      console.log('currentOperand: ', this.STATE.operands[1])
+      console.log('resultOperand: ', this.STATE.operands[1])
+
+      // this.setOperation = DEFAULT_VALUES().operation
 
       this.updateDisplayMemoise('computeEqual')
       this.updateDisplayResult('computeEqual')
-
-      this.setOperation = DEFAULT_VALUES().operation
-      this.setTempRezult = DEFAULT_VALUES().setTempRezult
     }
 
     this.log('after', 'computeEqual')

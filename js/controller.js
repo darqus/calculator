@@ -1,10 +1,7 @@
-import { OUTPUT } from './template.js'
-import { NODES, CALC_BUTTONS, getButtonsFromSelector } from './model.js'
+import { NODES, getButtonsFromSelector, CALC_BUTTONS_MODES } from './template.js'
 import { Calulator } from './Calculator.js'
 
-const calcButtons = OUTPUT + CALC_BUTTONS().map(({ label, attr, className }) => !className ? `<button ${attr}>${label}</button>` : `<button ${attr} class="twice">${label}</button>`).join(' ')
-
-NODES.calcButtons.innerHTML = calcButtons
+NODES.calcButtons.innerHTML = CALC_BUTTONS_MODES
 
 const calulator = new Calulator(
   getButtonsFromSelector().calcMemoiseNode,
