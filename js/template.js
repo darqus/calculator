@@ -104,4 +104,4 @@ export const CALC_BUTTONS = () => ([
   }
 ])
 
-export const CALC_BUTTONS_MODES = OUTPUT_NODE + CALC_BUTTONS().map(({ label, attr, className }) => !className ? `<button ${attr}>${label}</button>` : `<button ${attr} class="twice">${label}</button>`).join(' ')
+export const CALC_MODES = OUTPUT_NODE + CALC_BUTTONS().map(({ label, attr, className }) => !className ? `<button ${attr}>${label}</button>` : `<button ${attr} class="twice">${label}</button>`).join(' ')
