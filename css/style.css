@@ -5,7 +5,6 @@
   src: url("GothamRnd-Bold.eot");
   src: local("Gotham Rounded Bold Italic"), local("GothamRnd-Bold"), url("../fonts/GothamRnd-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/GothamRnd-Bold.woff2") format("woff2"), url("../fonts/GothamRnd-Bold.woff") format("woff"), url("../fonts/GothamRnd-Bold.ttf") format("truetype");
 }
-
 *,
 *::before,
 *::after {
@@ -27,32 +26,23 @@ BREAKPOINTS
 THEME
 *********************/
 .calculator-grid {
-  display: -ms-grid;
   display: grid;
   place-items: center;
   min-height: 100vh;
 }
-
 .calculator-grid .calc-buttons {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-rows: minmax(120px, auto) (100px)[5];
-      grid-template-rows: minmax(120px, auto) repeat(5, 100px);
-  -ms-grid-columns: (100px)[4];
-      grid-template-columns: repeat(4, 100px);
+  grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+  grid-template-columns: repeat(4, 100px);
   -webkit-box-shadow: -5px 5px 25px rgba(30, 40, 50, 0.5), 3px -6px 16px rgba(50, 30, 40, 0.5);
           box-shadow: -5px 5px 25px rgba(30, 40, 50, 0.5), 3px -6px 16px rgba(50, 30, 40, 0.5);
 }
-
 @media (max-width: 37.5em) {
   .calculator-grid .calc-buttons {
-    -ms-grid-rows: minmax(90px, auto) (75px)[5];
-        grid-template-rows: minmax(90px, auto) repeat(5, 75px);
-    -ms-grid-columns: (75px)[4];
-        grid-template-columns: repeat(4, 75px);
+    grid-template-rows: minmax(90px, auto) repeat(5, 75px);
+    grid-template-columns: repeat(4, 75px);
   }
 }
-
 .calculator-grid .calc-buttons > button {
   font-size: 2rem;
   color: rgba(0, 0, 0, 0.75);
@@ -63,18 +53,16 @@ THEME
   outline: none;
   -webkit-transition-timing-function: ease-out;
           transition-timing-function: ease-out;
-  -webkit-transition-duration: .3s;
-          transition-duration: .3s;
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
   -webkit-transition-property: color, text-shadow, background-color;
   transition-property: color, text-shadow, background-color;
 }
-
 @media (max-width: 37.5em) {
   .calculator-grid .calc-buttons > button {
     font-size: 1.5rem;
   }
 }
-
 @media (prefers-color-scheme: dark) {
   .calculator-grid .calc-buttons > button {
     color: rgba(255, 255, 255, 0.75);
@@ -83,13 +71,11 @@ THEME
     border: 1px solid #444;
   }
 }
-
 .calculator-grid .calc-buttons > button:focus, .calculator-grid .calc-buttons > button:hover {
   color: #000;
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
   background-color: rgba(255, 255, 255, 0.8);
 }
-
 @media (prefers-color-scheme: dark) {
   .calculator-grid .calc-buttons > button:focus, .calculator-grid .calc-buttons > button:hover {
     color: #fff;
@@ -97,11 +83,9 @@ THEME
     background-color: rgba(0, 0, 0, 0.6);
   }
 }
-
 .calculator-grid .twice {
   grid-column: span 2;
 }
-
 .calculator-grid .output {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -110,9 +94,8 @@ THEME
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-grid-rows: (1fr)[2];
-      grid-template-rows: repeat(2, 1fr);
-  grid-column: 1 / -1;
+  grid-template-rows: repeat(2, 1fr);
+  grid-column: 1/-1;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
@@ -124,7 +107,6 @@ THEME
   word-wrap: break-word;
   background-color: rgba(0, 0, 0, 0.75);
 }
-
 @media (prefers-color-scheme: dark) {
   .calculator-grid .output {
     color: rgba(255, 255, 255, 0.75);
@@ -132,35 +114,29 @@ THEME
     background-color: rgba(255, 255, 255, 0.75);
   }
 }
-
 .calculator-grid .previous-operand {
   font-size: 1.3rem;
   color: rgba(255, 255, 255, 0.45);
 }
-
 @media (max-width: 37.5em) {
   .calculator-grid .previous-operand {
     font-size: 0.9rem;
   }
 }
-
 @media (prefers-color-scheme: dark) {
   .calculator-grid .previous-operand {
     color: rgba(0, 0, 0, 0.45);
   }
 }
-
 .calculator-grid .current-operand {
   font-size: 2rem;
   color: #fff;
 }
-
 @media (max-width: 37.5em) {
   .calculator-grid .current-operand {
     font-size: 1.5rem;
   }
 }
-
 @media (prefers-color-scheme: dark) {
   .calculator-grid .current-operand {
     color: #000;

@@ -1,6 +1,10 @@
 body {
   margin: 0;
-  background: linear-gradient(217deg, rgba(30, 30, 30, .95), rgba(40, 30, 50, 0) 95%),
-    linear-gradient(127deg, rgba(30, 40, 50, .95), rgba(50, 30, 40, 0) 95%),
-    linear-gradient(336deg, rgba(40, 30, 30, .95), rgba(30, 40, 50, 0) 95%);
+  background: linear-gradient(
+      217deg,
+      rgba(30, 30, 30, 0.95),
+      rgba(40, 30, 50, 0) 95%
+    ),
+    linear-gradient(127deg, rgba(30, 40, 50, 0.95), rgba(50, 30, 40, 0) 95%),
+    linear-gradient(336deg, rgba(40, 30, 30, 0.95), rgba(30, 40, 50, 0) 95%);
 }

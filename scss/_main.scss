@@ -7,7 +7,8 @@
     display: grid;
     grid-template-rows: minmax(120px, auto) repeat(5, 100px);
     grid-template-columns: repeat(4, 100px);
-    box-shadow: -5px 5px 25px rgba(30, 40, 50, .5), 3px -6px 16px rgba(50, 30, 40, .5);
+    box-shadow: -5px 5px 25px rgba(30, 40, 50, 0.5),
+      3px -6px 16px rgba(50, 30, 40, 0.5);
     @include breakpoint(mobileonly) {
       grid-template-rows: minmax(90px, auto) repeat(5, 75px);
       grid-template-columns: repeat(4, 75px);
@@ -15,33 +16,33 @@
 
     & > button {
       font-size: 2rem;
-      color:rgba(0, 0, 0, 0.75);
-      text-shadow: 0 0 3px rgba(0, 0, 0, .6);
+      color: rgba(0, 0, 0, 0.75);
+      text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
       cursor: pointer;
       background-color: rgba(255, 255, 255, 0.75);
       border: 1px solid #bbb;
       outline: none;
       transition-timing-function: ease-out;
-      transition-duration: .3s;
+      transition-duration: 0.3s;
       transition-property: color, text-shadow, background-color;
       @include breakpoint(mobileonly) {
         font-size: 1.5rem;
       }
       @include theme(dark) {
-        color:rgba(255, 255, 255, 0.75);
-        text-shadow: 0 0 3px rgba(255, 255, 255, .6);
+        color: rgba(255, 255, 255, 0.75);
+        text-shadow: 0 0 3px rgba(255, 255, 255, 0.6);
         background-color: rgba(0, 0, 0, 0.75);
         border: 1px solid #444;
       }
 
       &:focus,
       &:hover {
-        color:#000;
-        text-shadow: 0 0 3px rgba(0, 0, 0, .4);
+        color: #000;
+        text-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
         background-color: rgba(255, 255, 255, 0.8);
         @include theme(dark) {
-          color:#fff;
-          text-shadow: 0 0 3px rgba(255, 255, 255, .4);
+          color: #fff;
+          text-shadow: 0 0 3px rgba(255, 255, 255, 0.4);
           background-color: rgba(0, 0, 0, 0.6);
         }
       }
@@ -60,13 +61,13 @@
     align-items: flex-end;
     justify-content: space-around;
     padding: 1rem;
-    text-shadow: 0 0 3px rgba(255, 255, 255, .6);
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.6);
     word-break: break-all;
     word-wrap: break-word;
     background-color: rgba(0, 0, 0, 0.75);
     @include theme(dark) {
-      color:rgba(255, 255, 255, 0.75);
-      text-shadow: 0 0 3px rgba(0, 0, 0, .6);
+      color: rgba(255, 255, 255, 0.75);
+      text-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
       background-color: rgba(255, 255, 255, 0.75);
     }
   }
@@ -78,7 +79,7 @@
       font-size: 0.9rem;
     }
     @include theme(dark) {
-      color:rgba(0, 0, 0, 0.45);
+      color: rgba(0, 0, 0, 0.45);
     }
   }
 
@@ -89,7 +90,7 @@
       font-size: 1.5rem;
     }
     @include theme(dark) {
-      color:#000;
+      color: #000;
     }
   }
 }
