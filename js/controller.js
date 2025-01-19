@@ -1,34 +1,33 @@
 import { getButtonsFromSelector } from './template.js'
-import { Calulator } from './Calculator.js'
+import { Calculator } from './Calculator.js'
 
-const calulator = new Calulator(
+const calculator = new Calculator(
   getButtonsFromSelector().calcMemoiseNode,
   getButtonsFromSelector().calcRezultNode
 )
 
 export const init = () => {
-  getButtonsFromSelector().numberButtons
-    .forEach((button) => button.addEventListener('click', () => {
-    calulator.appendNumber(button.innerText)
-  }))
+  getButtonsFromSelector().numberButtons.forEach((button) =>
+    button.addEventListener('click', () => {
+      calculator.appendNumber(button.innerText)
+    })
+  )
 
-  getButtonsFromSelector().operationButtons
-    .forEach((button) => button.addEventListener('click', () => {
-    calulator.chooseOperation(button.innerText)
-  }))
+  getButtonsFromSelector().operationButtons.forEach((button) =>
+    button.addEventListener('click', () => {
+      calculator.chooseOperation(button.innerText)
+    })
+  )
 
-  getButtonsFromSelector().equalsButton
-    .addEventListener('click', () => {
-    calulator.computeEqual()
+  getButtonsFromSelector().equalsButton.addEventListener('click', () => {
+    calculator.computeEqual()
   })
 
-  getButtonsFromSelector().clearButton
-    .addEventListener('click', () => {
-    calulator.clear()
+  getButtonsFromSelector().clearButton.addEventListener('click', () => {
+    calculator.clear()
   })
 
-  getButtonsFromSelector().deleteButton
-    .addEventListener('click', () => {
-    calulator.delete()
+  getButtonsFromSelector().deleteButton.addEventListener('click', () => {
+    calculator.delete()
   })
 }

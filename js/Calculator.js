@@ -1,7 +1,7 @@
 import { DIGIT_DELIMETER, isNumeric, setDigits, calc } from './utils.js'
 import { DEFAULT_VALUES } from './model.js'
 
-export class Calulator {
+export class Calculator {
   constructor(calcMemoiseNode, calcRezultNode) {
     this.calcMemoiseNode = calcMemoiseNode
     this.calcRezultNode = calcRezultNode
@@ -39,7 +39,7 @@ export class Calulator {
    */
   set setMemoiseOperand(value = DEFAULT_VALUES().operands[0]) {
     // return this.STATE.operands[0] = setDelimeter(value)
-    return this.STATE.operands[0] = value.toString()
+    return (this.STATE.operands[0] = value.toString())
   }
 
   /**
@@ -47,7 +47,7 @@ export class Calulator {
    */
   set setRezultOperand(value = DEFAULT_VALUES().operands[1]) {
     //  return this.STATE.operands[1] = setDelimeter(value)
-     return this.STATE.operands[1] = value.toString()
+    return (this.STATE.operands[1] = value.toString())
   }
 
   /**
@@ -55,14 +55,14 @@ export class Calulator {
    */
   set setTempRezult(value = DEFAULT_VALUES().tempRezult) {
     // return this.STATE.tempRezult = setDelimeter(value)
-    return this.STATE.tempRezult = value.toString()
+    return (this.STATE.tempRezult = value.toString())
   }
 
   /**
    * @param {string} value
    */
   set setOperation(value = DEFAULT_VALUES().operation) {
-    return this.STATE.operation = value
+    return (this.STATE.operation = value)
   }
 
   // METHODS
@@ -94,11 +94,14 @@ export class Calulator {
 
     const sliced = this.STATE.operands[1].toString().slice(0, -1)
 
-    this.setRezultOperand = ['', `${DEFAULT_VALUES().operands[1]}${DIGIT_DELIMETER}`].includes(sliced)
+    this.setRezultOperand = [
+      '',
+      `${DEFAULT_VALUES().operands[1]}${DIGIT_DELIMETER}`,
+    ].includes(sliced)
       ? DEFAULT_VALUES().operands[1]
       : this.existRezultOperand
-        ? sliced
-        : DEFAULT_VALUES().operands[1]
+      ? sliced
+      : DEFAULT_VALUES().operands[1]
 
     if (!this.existRezultOperand) {
       this.clear()
@@ -111,11 +114,15 @@ export class Calulator {
 
   /**
    * @param {string | number} value
-  */
+   */
   appendNumber(value) {
     console.log('value:', value)
 
-    if (value === DIGIT_DELIMETER && this.STATE.operands[1].includes(DIGIT_DELIMETER)) return
+    if (
+      value === DIGIT_DELIMETER &&
+      this.STATE.operands[1].includes(DIGIT_DELIMETER)
+    )
+      return
 
     this.log('before', 'appendNumber')
 
@@ -135,7 +142,13 @@ export class Calulator {
 
     console.log('resultOperand: ', resultOperand)
 
-    console.log('all', this.existMemoiseOperand && this.existOperation && this.existTempRezult && this.existRezultOperand)
+    console.log(
+      'all',
+      this.existMemoiseOperand &&
+        this.existOperation &&
+        this.existTempRezult &&
+        this.existRezultOperand
+    )
 
     /* if (this.existMemoiseOperand && this.existOperation && this.existTempRezult && this.existRezultOperand) {
       this.clear()
@@ -149,7 +162,6 @@ export class Calulator {
 
     // console.log('this.existMemoiseOperand:', this.existMemoiseOperand)
 
-
     this.updateDisplayResult('appendNumber')
 
     this.log('after', 'appendNumber')
@@ -157,7 +169,7 @@ export class Calulator {
 
   /**
    * @param {string} operation
-  */
+   */
   chooseOperation(operation) {
     this.log('before', 'chooseOperation')
 
@@ -179,14 +191,14 @@ export class Calulator {
   computeEqual() {
     this.log('before', 'computeEqual')
 
-    const OPERANDS = [
-      this.STATE.operands[0],
-      this.STATE.operands[1]
-    ].map((_) => parseFloat(_))
+    const OPERANDS = [this.STATE.operands[0], this.STATE.operands[1]].map((_) =>
+      parseFloat(_)
+    )
 
     console.log(OPERANDS)
 
-    const isNumberOperands = OPERANDS.map((_) => isNumeric(_)).filter(Boolean).length === 0
+    const isNumberOperands =
+      OPERANDS.map((_) => isNumeric(_)).filter(Boolean).length === 0
 
     if (!isNumberOperands) {
       OPERANDS[1] = OPERANDS[0]
@@ -202,7 +214,6 @@ export class Calulator {
 
     console.log('this.existMemoiseOperand %%%:', !this.existMemoiseOperand)
 
-
     if (!this.existOperation) {
       this.setMemoiseOperand = this.STATE.operands[1]
     }
@@ -212,7 +223,9 @@ export class Calulator {
 
       // this.setTempRezult = this.STATE.operands[1]
       this.setMemoiseOperand = this.STATE.operands[1]
-      this.setRezultOperand = setDigits(calc(OPERANDS[0])(this.STATE.operation)(OPERANDS[1]))
+      this.setRezultOperand = setDigits(
+        calc(OPERANDS[0])(this.STATE.operation)(OPERANDS[1])
+      )
 
       console.log('resultOperand: ', this.STATE.operands[1])
 
@@ -227,7 +240,7 @@ export class Calulator {
 
   /**
    * @param {string} operation
-  */
+   */
   updateDisplayMemoise(operation) {
     console.log('________________________________________')
     console.log('updateDisplayMemoise()')
@@ -247,8 +260,8 @@ export class Calulator {
       case 'appendNumber':
         console.log('this.existOperation:', this.existOperation)
         memoise = this.existOperation
-        ? `${setDigits(this.STATE.operands[1])} ${this.STATE.operation} =`
-        : DEFAULT_VALUES().operands[0]
+          ? `${setDigits(this.STATE.operands[1])} ${this.STATE.operation} =`
+          : DEFAULT_VALUES().operands[0]
         break
       case 'chooseOperation':
         console.log('this.existOperation:', this.existOperation)
@@ -257,7 +270,9 @@ export class Calulator {
           : `${setDigits(this.STATE.operands[1])} ${this.STATE.operation} =`
         break
       case 'computeEqual':
-        memoise = `${setDigits(this.STATE.tempRezult)} ${this.STATE.operation} ${setDigits(this.STATE.operands[0] || this.STATE.tempRezult)} =`
+        memoise = `${setDigits(this.STATE.tempRezult)} ${
+          this.STATE.operation
+        } ${setDigits(this.STATE.operands[0] || this.STATE.tempRezult)} =`
         break
       default:
         return this.STATE.operands[0]
@@ -272,7 +287,7 @@ export class Calulator {
 
   /**
    * @param {string} operation
-  */
+   */
   updateDisplayResult(operation) {
     console.log('________________________________________')
     console.log('updateDisplayResult')
