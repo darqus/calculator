@@ -3,7 +3,7 @@ import { Calculator } from './Calculator.js'
 
 const calculator = new Calculator(
   getButtonsFromSelector().calcMemoiseNode,
-  getButtonsFromSelector().calcRezultNode
+  getButtonsFromSelector().calcResultNode
 )
 
 export const init = () => {

@@ -1,10 +1,10 @@
-import { DIGIT_DELIMETER, isNumeric, setDigits, calc } from './utils.js'
+import { DIGIT_DELIMITER, isNumeric, setDigits, calc } from './utils.js'
 import { DEFAULT_VALUES } from './model.js'
 
 export class Calculator {
-  constructor(calcMemoiseNode, calcRezultNode) {
+  constructor(calcMemoiseNode, calcResultNode) {
     this.calcMemoiseNode = calcMemoiseNode
-    this.calcRezultNode = calcRezultNode
+    this.calcResultNode = calcResultNode
     // this.clear()
   }
 
@@ -17,12 +17,12 @@ export class Calculator {
     return this.STATE.operands[0] !== DEFAULT_VALUES().operands[0]
   }
 
-  get existRezultOperand() {
+  get existResultOperand() {
     return this.STATE.operands[1] !== DEFAULT_VALUES().operands[1]
   }
 
-  get existTempRezult() {
-    return this.STATE.tempRezult !== DEFAULT_VALUES().tempRezult
+  get existTempResult() {
+    return this.STATE.tempResult !== DEFAULT_VALUES().tempResult
   }
 
   get existOperation() {
@@ -30,7 +30,7 @@ export class Calculator {
   }
 
   /* get clickedEquals() {
-    return this.STATE.countClickEqiual > DEFAULT_VALUES().countClickEqiual
+    return this.STATE.countClickEqual > DEFAULT_VALUES().countClickEqual
   } */
 
   // SETTERS (computed)
@@ -38,24 +38,24 @@ export class Calculator {
    * @param {string | number} value
    */
   set setMemoiseOperand(value = DEFAULT_VALUES().operands[0]) {
-    // return this.STATE.operands[0] = setDelimeter(value)
+    // return this.STATE.operands[0] = setDELIMITER(value)
     return (this.STATE.operands[0] = value.toString())
   }
 
   /**
    * @param {string | number} value
    */
-  set setRezultOperand(value = DEFAULT_VALUES().operands[1]) {
-    //  return this.STATE.operands[1] = setDelimeter(value)
+  set setResultOperand(value = DEFAULT_VALUES().operands[1]) {
+    //  return this.STATE.operands[1] = setDELIMITER(value)
     return (this.STATE.operands[1] = value.toString())
   }
 
   /**
    * @param {string | number} value
    */
-  set setTempRezult(value = DEFAULT_VALUES().tempRezult) {
-    // return this.STATE.tempRezult = setDelimeter(value)
-    return (this.STATE.tempRezult = value.toString())
+  set setTempResult(value = DEFAULT_VALUES().tempResult) {
+    // return this.STATE.tempResult = setDELIMITER(value)
+    return (this.STATE.tempResult = value.toString())
   }
 
   /**
@@ -66,15 +66,15 @@ export class Calculator {
   }
 
   // METHODS
-  /* incrementCountClickEqiual() {
-    this.STATE.countClickEqiual++
+  /* incrementCountClickEqual() {
+    this.STATE.countClickEqual++
   } */
 
   log(value, func) {
     console.log()
     console.log('______________', value, func)
     console.log('operands:', this.STATE.operands)
-    console.log('tempRezult:', this.STATE.tempRezult)
+    console.log('tempResult:', this.STATE.tempResult)
     console.log('operation:', this.STATE.operation)
   }
 
@@ -89,21 +89,21 @@ export class Calculator {
   }
 
   delete() {
-    if (!this.existRezultOperand) return
+    if (!this.existResultOperand) return
     this.log('before', 'delete')
 
     const sliced = this.STATE.operands[1].toString().slice(0, -1)
 
-    this.setRezultOperand = [
+    this.setResultOperand = [
       '',
-      `${DEFAULT_VALUES().operands[1]}${DIGIT_DELIMETER}`,
+      `${DEFAULT_VALUES().operands[1]}${DIGIT_DELIMITER}`,
     ].includes(sliced)
       ? DEFAULT_VALUES().operands[1]
-      : this.existRezultOperand
+      : this.existResultOperand
       ? sliced
       : DEFAULT_VALUES().operands[1]
 
-    if (!this.existRezultOperand) {
+    if (!this.existResultOperand) {
       this.clear()
     }
 
@@ -119,8 +119,8 @@ export class Calculator {
     console.log('value:', value)
 
     if (
-      value === DIGIT_DELIMETER &&
-      this.STATE.operands[1].includes(DIGIT_DELIMETER)
+      value === DIGIT_DELIMITER &&
+      this.STATE.operands[1].includes(DIGIT_DELIMITER)
     )
       return
 
@@ -128,12 +128,12 @@ export class Calculator {
 
     let resultDigit = value
 
-    if (this.existRezultOperand) {
+    if (this.existResultOperand) {
       resultDigit = this.STATE.operands[1].toString() + value
     }
 
-    if (value === DIGIT_DELIMETER) {
-      resultDigit = DEFAULT_VALUES().operands[1] + DIGIT_DELIMETER
+    if (value === DIGIT_DELIMITER) {
+      resultDigit = DEFAULT_VALUES().operands[1] + DIGIT_DELIMITER
     }
 
     console.log('resultDigit:', resultDigit)
@@ -146,18 +146,18 @@ export class Calculator {
       'all',
       this.existMemoiseOperand &&
         this.existOperation &&
-        this.existTempRezult &&
-        this.existRezultOperand
+        this.existTempResult &&
+        this.existResultOperand
     )
 
-    /* if (this.existMemoiseOperand && this.existOperation && this.existTempRezult && this.existRezultOperand) {
+    /* if (this.existMemoiseOperand && this.existOperation && this.existTempResult && this.existResultOperand) {
       this.clear()
     } */
 
-    this.setRezultOperand = resultOperand
+    this.setResultOperand = resultOperand
 
     if (!this.existMemoiseOperand) {
-      this.setTempRezult = resultOperand
+      this.setTempResult = resultOperand
     }
 
     // console.log('this.existMemoiseOperand:', this.existMemoiseOperand)
@@ -181,9 +181,9 @@ export class Calculator {
 
     this.updateDisplayMemoise('chooseOperation')
 
-    // this.setTempRezult = this.STATE.operands[1]
+    // this.setTempResult = this.STATE.operands[1]
     this.setMemoiseOperand = this.STATE.operands[1]
-    this.setRezultOperand = DEFAULT_VALUES().operands[0]
+    this.setResultOperand = DEFAULT_VALUES().operands[0]
 
     this.log('after', 'chooseOperation')
   }
@@ -210,7 +210,7 @@ export class Calculator {
 
     console.log('############operation:', this.STATE.operation)
 
-    console.log('not exist res op:', !this.existRezultOperand)
+    console.log('not exist res op:', !this.existResultOperand)
 
     console.log('this.existMemoiseOperand %%%:', !this.existMemoiseOperand)
 
@@ -221,9 +221,9 @@ export class Calculator {
     if (this.existOperation) {
       console.log('####', this.STATE.operands[1])
 
-      // this.setTempRezult = this.STATE.operands[1]
+      // this.setTempResult = this.STATE.operands[1]
       this.setMemoiseOperand = this.STATE.operands[1]
-      this.setRezultOperand = setDigits(
+      this.setResultOperand = setDigits(
         calc(OPERANDS[0])(this.STATE.operation)(OPERANDS[1])
       )
 
@@ -266,13 +266,13 @@ export class Calculator {
       case 'chooseOperation':
         console.log('this.existOperation:', this.existOperation)
         memoise = this.existOperation
-          ? `${setDigits(this.STATE.tempRezult)} ${this.STATE.operation}`
+          ? `${setDigits(this.STATE.tempResult)} ${this.STATE.operation}`
           : `${setDigits(this.STATE.operands[1])} ${this.STATE.operation} =`
         break
       case 'computeEqual':
-        memoise = `${setDigits(this.STATE.tempRezult)} ${
+        memoise = `${setDigits(this.STATE.tempResult)} ${
           this.STATE.operation
-        } ${setDigits(this.STATE.operands[0] || this.STATE.tempRezult)} =`
+        } ${setDigits(this.STATE.operands[0] || this.STATE.tempResult)} =`
         break
       default:
         return this.STATE.operands[0]
@@ -295,13 +295,13 @@ export class Calculator {
 
     this.log('before', 'updateDisplayResult')
 
-    // const rezult = this.STATE.operands[1]
+    // const result = this.STATE.operands[1]
 
-    let rezult = this.STATE.operands[1]
+    let result = this.STATE.operands[1]
 
     switch (operation) {
       case 'clear':
-        rezult = DEFAULT_VALUES().operands[1]
+        result = DEFAULT_VALUES().operands[1]
         break
       case 'delete':
         break
@@ -309,18 +309,18 @@ export class Calculator {
         break
       case 'chooseOperation':
         // console.log(this.existOperation)
-        // rezult = DEFAULT_VALUES().operands[1]
+        // result = DEFAULT_VALUES().operands[1]
         break
       case 'computeEqual':
-        // rezult = DEFAULT_VALUES().operands[1]
+        // result = DEFAULT_VALUES().operands[1]
         break
       default:
         return this.STATE.operands[1]
     }
 
-    console.log('rezult:', rezult)
+    console.log('result:', result)
 
-    this.calcRezultNode.innerText = setDigits(rezult)
+    this.calcResultNode.innerText = setDigits(result)
 
     this.log('after', 'updateDisplayResult')
   }
