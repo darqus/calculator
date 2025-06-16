@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/prettierrc",
+  "semi": false,
+  "bracketSpacing": true,
+  "trailingComma": "all",
+  "vueIndentScriptAndStyle": false,
+  "endOfLine": "auto",
+  "useTabs": false,
+  "tabWidth": 2,
+  "singleAttributePerLine": true,
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": "*.scss",
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
+}
